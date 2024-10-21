@@ -1,0 +1,110 @@
+/* Movie Slider */
+:root {
+    --handle-size: 3rem;
+    --img-gap: .5rem;
+}
+
+.container {
+    max-width: 100%;
+}
+
+.slider {
+    --items-per-screen: 7;
+    --slider-index: 0;
+    margin: 0 var(--img-gap);
+    transform: translateX(calc(var(--slider-index) * -100%));
+    transition: transform 250ms ease-in-out;
+}
+
+.slider>.card {
+    flex: 0 0 calc(100% / var(--items-per-screen));
+    max-width: calc(100% / var(--items-per-screen));
+    max-height: 500px;
+    /* aspect-ratio: 16 / 9; */
+    padding: var(--img-gap);
+    border-radius: 1rem;
+}
+
+.slider>.card>img {
+    border-radius: 1rem;
+}
+
+.handle {
+    border: none;
+    border-radius: 1rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: darkgrey;
+    z-index: 10;
+    margin: var(--img-gap) 0;
+    width: var(--handle-size);
+    cursor: pointer;
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    line-height: 0;
+    transition: background-color 150ms ease-in-out;
+}
+
+.left-handle {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.right-handle {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.handle:hover,
+.handle:focus {
+    background-color: rgb(158, 158, 158);
+}
+
+.text {
+    transition: transform 150ms ease-in-out;
+}
+
+.header {
+    padding: .5rem calc(var(--img-gap) * 2 + var(--handle-size));
+    align-items: center;
+}
+
+
+@media (max-width: 1000px) {
+    .slider {
+        --items-per-screen: 4;
+    }
+}
+
+@media (max-width: 500px) {
+    .slider {
+        --items-per-screen: 3;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    margin-inline: .5em;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
